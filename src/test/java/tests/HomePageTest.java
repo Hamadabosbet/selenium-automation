@@ -12,8 +12,16 @@ public class HomePageTest  extends TestBase {
     public void verifyPageTitle() {
         HomePage homePage = new HomePage(driver);
         String actualTitle = homePage.getPageTitle();
-        System.out.println(actualTitle);
         Assert.assertEquals(actualTitle, EXPECTED_TITLE, "Page title is incorrect!");
 
     }
+
+    @Test
+    public void verifyLogoIsDisplayed() {
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.isLogoDisplayed(), "Logo is not displayed!");
+    }
+
+
+
 }
