@@ -22,9 +22,15 @@ public class HomePageTest  extends TestBase {
         Assert.assertTrue(homePage.isLogoDisplayed(), "Logo is not displayed!");
     }
     @Test
-    public void verifyH1Title() {
+    public void verifyH1Title() throws InterruptedException {
+        Thread.sleep(500);
         HomePage homePage = new HomePage(driver);
-        Assert.assertEquals(homePage.getH1Title(), "AdID Demo Store", "h1 title is incorrect!");
+        try {
+            Assert.assertEquals(homePage.getH1Title(), "dsdf Demo Store", "H1 title is incorrect!");
+        } catch (AssertionError e) {
+            highlightElement(homePage.getH1Element());  // highlight the element in red
+            throw e;               // rethrow so test still fails
+        }
 
 
     }
