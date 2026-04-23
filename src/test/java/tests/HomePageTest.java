@@ -21,7 +21,11 @@ public class HomePageTest  extends TestBase {
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.isLogoDisplayed(), "Logo is not displayed!");
     }
+    @Test
+    public void verifyH1Title() {
+        HomePage homePage = new HomePage(driver);
+        Assert.assertEquals(homePage.getH1Title(), "AdID Demo Store", "h1 title is incorrect!");
 
 
-
+    }
 }
