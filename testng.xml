@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="ATID Store Test Suite" verbose="1" thread-count="1" parallel="none">
+
+    <!-- Global Parameters -->
+    <parameter name="browser" value="chrome"/>
+    <parameter name="baseUrl" value="https://atid.store/"/>
+
+    <test name="Home Page Tests">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="verifyPageTitle"/>
+                    <include name="verifyLogoIsDisplayed"/>
+                    <include name="verifyH1Title"/>
+                    <include name="verifyNavigationLinks"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Store Page Tests">
+        <classes>
+            <class name="tests.StorePageTest">
+                <methods>
+                    <include name="verifyProductsAreDisplayed"/>
+                    <include name="verifyProductCount"/>
+                    <include name="verifyProductNamesDisplayed"/>
+                    <include name="verifyProductPricesDisplayed"/>
+                    <include name="verifyProductImagesDisplayed"/>
+                    <include name="verifyProductPageOpens"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
