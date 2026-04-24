@@ -13,8 +13,11 @@ public class StorePage {
 
     private WebDriverWait wait;
     private WebDriver driver;
-    private By storeLink= By.linkText("STORE");
+    private By storeLink = By.linkText("STORE");
     private By products = By.cssSelector("ul.products li.product");
+    private By productName    = By.cssSelector("h2.woocommerce-loop-product__title");
+    private By productPrice   = By.cssSelector("span.price");
+    private By productImage   = By.cssSelector("img.attachment-woocommerce_thumbnail");
 
 
     public StorePage(WebDriver driver) {
@@ -26,15 +29,16 @@ public class StorePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(storeLink)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(products));
     }
+
     public int getProductCount() {
         List<WebElement> productList = driver.findElements(products);
         return productList.size();
     }
 
-    public boolean areAllProductsDisplayed(){
-        List<WebElement> ProductList=driver.findElements(products);
-        for(WebElement product:ProductList){
-            if (!product.isDisplayed()){
+    public boolean areAllProductsDisplayed() {
+        List<WebElement> ProductList = driver.findElements(products);
+        for (WebElement product : ProductList) {
+            if (!product.isDisplayed()) {
                 return false;
             }
 
@@ -42,8 +46,29 @@ public class StorePage {
         return true;
     }
 
+    public boolean areAllProductDetialDisplayed(WebElement product) {
+        WebElement name = product.findElement(productName);
+        WebElement price = product.findElement(productPrice);
+        WebElement image = product.findElement(productImage);
+
+        return name.isDisplayed()&&
+                !name.getText().isEmpty()&&
+                !price.getText().isEmpty() && price.isDisplayed()
+                && image.isDisplayed();
 
 
+    }
+    public boolean areAllProductsDetialDisplayed() {
+        List<WebElement> ProductList = driver.findElements(products);
+        for (WebElement product : ProductList) {
+            if (!areAllProductDetialDisplayed(product)) {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+    }
 
 
-}
