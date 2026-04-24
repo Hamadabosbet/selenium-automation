@@ -18,6 +18,9 @@ public class StorePage {
     private final By productName    = By.cssSelector("h2.woocommerce-loop-product__title");
     private final By productPrice   = By.cssSelector("span.price");
     private final By productImage   = By.cssSelector("img.attachment-woocommerce_thumbnail");
+    private By firstProduct     = By.cssSelector("ul.products li.product:first-child a.woocommerce-LoopProduct-link");
+    private By productPageTitle = By.cssSelector("h1.product_title");
+
 
 
     public StorePage(WebDriver driver) {
@@ -67,6 +70,26 @@ public class StorePage {
 
         }
         return true;
+    }
+
+    public void clickFirstProduct() {
+        WebElement product = wait.until(ExpectedConditions.elementToBeClickable(firstProduct));
+        product.click();
+    }
+
+    public boolean isProductPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productPageTitle));
+        return driver.findElement(productPageTitle).isDisplayed();
+    }
+
+    public String getProductPageTitle() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productPageTitle));
+        return driver.findElement(productPageTitle).getText();
+    }
+
+    public String getProductNameBeforeClick() {
+        WebElement name = driver.findElement(productName);
+        return name.getText();
     }
 
     }
