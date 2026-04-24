@@ -13,11 +13,11 @@ public class StorePage {
 
     private WebDriverWait wait;
     private WebDriver driver;
-    private By storeLink = By.linkText("STORE");
-    private By products = By.cssSelector("ul.products li.product");
-    private By productName    = By.cssSelector("h2.woocommerce-loop-product__title");
-    private By productPrice   = By.cssSelector("span.price");
-    private By productImage   = By.cssSelector("img.attachment-woocommerce_thumbnail");
+    private final By storeLink = By.linkText("STORE");
+    private final By products = By.cssSelector("ul.products li.product");
+    private final By productName    = By.cssSelector("h2.woocommerce-loop-product__title");
+    private final By productPrice   = By.cssSelector("span.price");
+    private final By productImage   = By.cssSelector("img.attachment-woocommerce_thumbnail");
 
 
     public StorePage(WebDriver driver) {
@@ -70,5 +70,3 @@ public class StorePage {
     }
 
     }
-
-
