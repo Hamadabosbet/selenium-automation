@@ -8,7 +8,7 @@ public class TestConstants {
 
     // Home Page Constants
     public static final String HOME_PAGE_TITLE = "ATID Demo Store – ATID College Demo Store for Practicing QA Automation";
-    public static final String HOME_PAGE_H1_TITLE = "ATID Demo Store";
+    public static final String HOME_PAGE_H1_TITLE = "ATfdID Demo Store";
 
     // Navigation Links
     public static final String[] EXPECTED_NAV_LINKS = {
